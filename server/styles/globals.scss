@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+// * {
+//   box-sizing: border-box;
+// }
+
+// h1 {
+//   font-size: 2rem;
+//   color: #454F5B;
+// }
+
+// h2 {
+//   font-size: 1.5rem;
+//   color: #454F5B;
+// }
+
+/*need to override BS in a better way*/
+// .dropdown-item {
+//   color: #2b2b2b !important;
+// }
+
+// #menu {
+//   color: #383d42;
+//     background-color: #ffffff;
+//     border-color: #ffffff;
+
+//     & + .dropdown-menu.show {
+//       min-width: 18rem !important;
+//   }
+
+//     &.dropdown-toggle::after{
+//       display: none;
+//     }
+
+//     &.btn-primary:not(:disabled):not(.disabled):active:focus,
+//     &.btn-primary:focus,
+//     .show>&.btn-primary.dropdown-toggle:focus {
+//       box-shadow: none;
+//     }
+// }
+.header {
+  width: 100%;
+  padding: 2%;
+  background-color: rgb(219, 219, 219);
+  color: white;
+  text-align: center;
+}

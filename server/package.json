@@ -1,0 +1,36 @@
+{
+  "name": "server",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^1.1.1",
+    "@chakra-ui/react": "^1.7.4",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@module-federation/nextjs-ssr": "0.0.1-beta.12",
+    "cross-env": "^7.0.3",
+    "express": "^4.17.2",
+    "framer-motion": "^5",
+    "lodash": "^4.17.21",
+    "next": "^12.0.8",
+    "next-compose-plugins": "^2.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.49.0",
+    "webpack": "^5.66.0",
+    "webpack-merge": "^5.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.9",
+    "@types/react": "^17.0.38",
+    "eslint": "^8.7.0",
+    "eslint-config-next": "^12.0.8",
+    "parse-json": "^6.0.2",
+    "typescript": "^4.5.4"
+  }
+}
