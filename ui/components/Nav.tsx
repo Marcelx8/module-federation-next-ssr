@@ -19,7 +19,7 @@ function Nav() {
         ))}
       </ul>
 
-      <style jsx>{`
+      {/* <style jsx>{`
       :global(body) {
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
@@ -47,7 +47,7 @@ function Nav() {
         font-size: 13px;
         padding-right: 10px;
       }
-    `}</style>
+    `}</style> */}
     </nav>
   )
 }

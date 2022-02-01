@@ -1,11 +1,31 @@
 import type { AppProps } from 'next/app'
+// import Script from 'next/script'
 import { ChakraProvider } from '@chakra-ui/react'
 import theme from '../theme'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider resetCSS theme={theme}>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <>
+      {/* <Script
+        data-webpack="server"
+        src="http://localhost:3000/_next/static/chunks/remoteEntry.js"
+      />
+      <Script
+        data-webpack="home"
+        src="http://localhost:3001/_next/static/chunks/remoteEntry.js"
+      />
+      <Script
+        data-webpack="products"
+        src="http://localhost:3002/_next/static/chunks/remoteEntry.js"
+      />
+      <Script
+        data-webpack="ui"
+        src="http://localhost:3003/_next/static/chunks/remoteEntry.js"
+      /> */}
+
+      <ChakraProvider resetCSS theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </>
   )
 }
 

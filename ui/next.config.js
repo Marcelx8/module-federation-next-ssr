@@ -10,64 +10,65 @@ const remotes = (isServer) => {
     ui: `ui@http://localhost:3003/_next/static/${location}/remoteEntry.js?${Date.now()}`,
   };
 };
-module.exports = withFederatedSidecar({
-  name: 'ui',
-  filename: 'static/chunks/remoteEntry.js',
-  exposes: {
-    './ui': './pages/ui.tsx',
-    './Layout': './components/layout/Layout.tsx',
-    './Header': './components/layout/Header.tsx',
-    './Counter': './components/Counter.tsx',
-    './Title': './components/Title.tsx',
-    './Nav': './components/Nav.tsx',
-    './store': './lib/store.ts',
-    './pages-map': './pages-map.ts',
-  },
-  remotes,
-  shared: {
-    react: {
-      // Notice shared are NOT eager here.
-      requiredVersion: false,
-      singleton: true,
+module.exports = withFederatedSidecar(
+  {
+    name: 'ui',
+    filename: 'static/chunks/remoteEntry.js',
+    exposes: {
+      './ui': './pages/ui.tsx',
+      './Layout': './components/layout/Layout.tsx',
+      './Header': './components/layout/Header.tsx',
+      './Counter': './components/Counter.tsx',
+      './Title': './components/Title.tsx',
+      './Nav': './components/Nav.tsx',
+      './store': './lib/store.ts',
+      './pages-map': './pages-map.ts',
     },
-    zustand: {
-      requiredVersion: false,
-      singleton: true,
-      eager: true,
+    remotes,
+    shared: {
+      react: {
+        // Notice shared are NOT eager here.
+        requiredVersion: false,
+        singleton: true,
+      },
+      zustand: {
+        requiredVersion: false,
+        singleton: true,
+        eager: false,
+      },
+      '@chakra-ui/react': {
+        requiredVersion: false,
+        singleton: true,
+        eager: true,
+      },
+      '@chakra-ui/icons': {
+        requiredVersion: false,
+        singleton: true,
+        eager: true,
+      },
+      '@emotion/react': {
+        requiredVersion: false,
+        singleton: true,
+        eager: true,
+      },
+      '@emotion/styled': {
+        requiredVersion: false,
+        singleton: true,
+        eager: true,
+      },
+      'framer-motion': {
+        requiredVersion: false,
+        singleton: true,
+        eager: true,
+      },
+      sass: {
+        requiredVersion: false,
+        singleton: true,
+        eager: false,
+      },
     },
-    "@chakra-ui/react": {
-      requiredVersion: false,
-      singleton: true,
-      eager: true,
-    },
-    "@chakra-ui/icons": {
-      requiredVersion: false,
-      singleton: true,
-      eager: true,
-    },
-    "@emotion/react": {
-      requiredVersion: false,
-      singleton: true,
-      eager: true,
-    },
-    "@emotion/styled": {
-      requiredVersion: false,
-      singleton: true,
-      eager: true,
-    },
-    "framer-motion": {
-      requiredVersion: false,
-      singleton: true,
-      eager: true,
-    },
-    sass: {
-      requiredVersion: false,
-      singleton: true,
-      eager: false,
-    }
-  },
-
-})({
+  }
+)({
   webpack5: true,
   webpack(config, options) {
     config.module.rules.push({

@@ -1,5 +1,9 @@
-import React from 'react';
-import create, { StoreApi, UseBoundStore } from 'zustand';
-export type store = () => UseBoundStore<{ count: number, increment: () => void, decrement: () => void }, StoreApi<{ count: number, increment: () => void, decrement: () => void }>>;
+import create, { UseBoundStore, StoreApi } from 'zustand';
+export type InitialState = {
+  count: number,
+  increment: () => void,
+  decrement: () => void
+}
+type store = UseBoundStore<InitialState, StoreApi<InitialState>>
 const useStore: store;
 export default useStore;

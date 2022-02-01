@@ -11,6 +11,9 @@
     "build": "concurrently \"wsrun --parallel build\"",
     "start": "concurrently \"wsrun --parallel start\""
   },
+  "resolutions": {
+    "webpack": "^5.66.0"
+  },
   "dependencies": {
     "concurrently": "^6.4.0",
     "wsrun": "^5.2.4"

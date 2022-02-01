@@ -2,10 +2,10 @@ import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/do
 import { ColorModeScript } from '@chakra-ui/react'
 
 class MyDocument extends Document {
-  // static async getStaticProps(ctx: DocumentContext) {
-  //   const initialProps = await Document.getInitialProps(ctx);
-  //   return { ...initialProps };
-  // }
+  static async getInitialProps(ctx: DocumentContext) {
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps };
+  }
 
   render() {
     return (

@@ -1,17 +1,17 @@
 import type { NextPage } from 'next'
 import dynamic from 'next/dynamic';
 import Head from 'next/head'
-import theme from '../theme'
 
-const Layout = dynamic(() => import('ui/Layout'));
-// const Counter = dynamic(() => import('ui/Counter'));
-import useStore from 'ui/store';
+import Layout from 'ui/Layout';
+// const Layout = dynamic(async () => (await import('ui/Layout')));
+import useStore, { InitialState } from 'ui/store';
 import Counter from 'ui/Counter';
 import Title from 'ui/Title';
 
-const UI: NextPage = () => {
+const UI = () => {
 
-  const { count, increment, decrement } = useStore();
+  const { count, increment } = useStore();
+  const decrement = useStore((state: InitialState) => state.decrement)
 
   return (
     <>
@@ -30,8 +30,8 @@ const UI: NextPage = () => {
   )
 }
 
-UI.getInitialProps = async (ctx) => {
-  return {};
-}
+// UI.getInitialProps = async (ctx) => {
+//   return {};
+// }
 
 export default UI

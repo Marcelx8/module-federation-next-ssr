@@ -1,16 +1,19 @@
-import type { NextPage } from 'next'
-import dynamic from 'next/dynamic';
 import Head from 'next/head'
+import getTodos from '../lib/api'
 
-const Layout = dynamic(() => import('ui/Layout'));
-const Counter = dynamic(() => import('ui/Counter'));
-const Title = dynamic(() => import('ui/Title'));
-
+import Layout from 'ui/Layout'
+import Counter from 'ui/Counter'
+import Title from 'ui/Title'
 import useStore from 'ui/store'
 
-function Home(data: any) {
+interface PostData {
+  postData: any
+}
 
-  const { count, increment, decrement } = useStore();
+function Home({postData}: PostData) {
+  console.log("postData ::", postData)
+
+  const { count, increment, decrement } = useStore()
 
   return (
     <>
@@ -23,19 +26,34 @@ function Home(data: any) {
         <Layout>
           <Title text="Home" />
           <Counter count={count} onIncrement={increment} onDecrement={decrement} />
-          {/* <div>
+          <div>
             <h3>Data:</h3>
-            {JSON.stringify(data)}
-          </div> */}
+            {JSON.stringify(postData)}
+          </div>
         </Layout>
       </main>
     </>
   )
 }
 
-export async function getServerSideProps() {
-  const data = await fetch('https://jsonplaceholder.typicode.com/todos/2').then(res => res.json());
-  return data;
+Home.getInitialProps = async () => {
+  const postData: PostData = await getTodos()
+  return { postData };
 }
+
+
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   console.log("getServerSideProps", context)
+//   const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+//   const postData = await response.json();
+//   if (!postData) {
+//     return {
+//       notFound: true,
+//     }
+//   }
+//   return {
+//     props: {postData}
+//   };
+// }
 
 export default Home
