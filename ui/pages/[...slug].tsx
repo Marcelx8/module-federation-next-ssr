@@ -1,3 +1,2 @@
-import { createFederatedCatchAll } from "route-matcher";
-
+import { createFederatedCatchAll } from "next-shared-logic";
 export default createFederatedCatchAll(process.env.REMOTES);

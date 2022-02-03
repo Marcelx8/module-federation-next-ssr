@@ -1,5 +1,7 @@
+import { NextPage } from 'next'
 import Head from 'next/head'
 import getTodos from '../lib/api'
+import dynamic from 'next/dynamic';
 
 const Layout = (await import('ui/Layout')).default
 const Counter = (await import('ui/Counter')).default
@@ -10,7 +12,7 @@ interface PostData {
   postData: any
 }
 
-function RealIndex({postData}: PostData) {
+const RealHome = ({ postData }: PostData) => {
   console.log("postData ::", postData)
 
   const { count, increment, decrement } = useStore()
@@ -36,9 +38,9 @@ function RealIndex({postData}: PostData) {
   )
 }
 
-RealIndex.getInitialProps = async () => {
+RealHome.getInitialProps = async () => {
   const postData: PostData = await getTodos()
-  return { postData };
+  return { props: postData };
 }
 
-export default RealIndex
+export default RealHome

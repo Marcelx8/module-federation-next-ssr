@@ -8,7 +8,7 @@ const links = [
   { href: "/ui", label: "UI" },
 ];
 
-function Nav() {
+const Nav = () => {
   return (
     <nav>
       <ul>

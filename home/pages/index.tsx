@@ -1,5 +1,2 @@
-import dynamic from 'next/dynamic';
-
-const Home = dynamic(() => import('./realIndex'))
-
-export default Home
+import { createFederatedCatchAll } from "next-shared-logic";
+export default createFederatedCatchAll(process.env.REMOTES);

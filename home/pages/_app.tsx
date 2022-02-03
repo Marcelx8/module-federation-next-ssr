@@ -1,4 +1,6 @@
 import type { AppProps } from 'next/app'
+import App from 'next/app';
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -23,5 +25,22 @@ function MyApp({ Component, pageProps }: AppProps) {
     </>
   )
 }
+
+MyApp.getInitialProps = async (appContext: any) => {
+  const [appProps] = await Promise.all([
+    App.getInitialProps(appContext),
+  ]);
+
+  const props = { ...appProps };
+
+  if (typeof window === "undefined") {
+    appContext.ctx.res.setHeader(
+      "Cache-Control",
+      "s-maxage=1, stale-while-revalidate"
+    );
+  }
+
+  return props;
+};
 
 export default MyApp

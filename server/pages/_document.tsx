@@ -1,18 +1,26 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document";
-import { ColorModeScript } from '@chakra-ui/react'
+import { flushChunks, ExtendedHead } from "@module-federation/nextjs-ssr/flushChunks";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
+    return {
+      ...initialProps,
+      remoteChunks: await flushChunks(process.env.REMOTES),
+    };
   }
 
   render() {
     return (
       <Html>
-        <Head />
+        {/* <Head /> */}
+        <ExtendedHead>
+          <meta name="robots" content="noindex" />
+          {/* @ts-ignore*/}
+          {this.props.remoteChunks}
+        </ExtendedHead>
         <body>
-          <script
+          {/* <script
             data-webpack="server"
             src="http://localhost:3000/_next/static/chunks/remoteEntry.js"
           />
@@ -27,8 +35,7 @@ class MyDocument extends Document {
           <script
             data-webpack="ui"
             src="http://localhost:3003/_next/static/chunks/remoteEntry.js"
-          />
-          <ColorModeScript />
+          /> */}
           <Main />
           <NextScript />
         </body>
