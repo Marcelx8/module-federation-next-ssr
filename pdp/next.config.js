@@ -1,6 +1,3 @@
-/**
- * @type {import('next').NextConfig}
- **/
 const { withFederatedSidecar } = require('@module-federation/nextjs-ssr');
 const FederatedStatsPlugin = require('webpack-federated-stats-plugin');
 const withPlugins = require('next-compose-plugins');
@@ -15,7 +12,7 @@ const exposes = {
 const remotes = (isServer) => {
   const location = isServer ? 'ssr' : 'chunks';
   return {
-    server: `server@http://localhost:3000/_next/static/${location}/remoteEntry.js?${Date.now()}`,
+    shell: `shell@http://localhost:3000/_next/static/${location}/remoteEntry.js?${Date.now()}`,
     home: `home@http://localhost:3001/_next/static/${location}/remoteEntry.js?${Date.now()}`,
     products: `products@http://localhost:3002/_next/static/${location}/remoteEntry.js?${Date.now()}`,
     ui: `ui@http://localhost:3003/_next/static/${location}/remoteEntry.js?${Date.now()}`,
@@ -30,6 +27,12 @@ const nextConfig = {
       test: /_app.tsx/,
       loader: '@module-federation/nextjs-ssr/lib/federation-loader.js',
     });
+
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        "process.env.CURRENT_HOST": JSON.stringify("products"),
+      })
+    );
 
     if (!isServer) {
       config.plugins.push(
@@ -56,6 +59,11 @@ module.exports = withPlugins(
           requiredVersion: false,
           singleton: true,
         },
+      },
+    },
+    {
+      experiments: {
+        flushChunks: true,
       },
     }),
   ],

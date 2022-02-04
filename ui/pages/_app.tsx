@@ -1,49 +1,13 @@
-import type { AppProps } from 'next/app'
-import App from 'next/app';
-import { ChakraProvider } from '@chakra-ui/react'
-import theme from '../theme'
+import { AppProps, AppContext } from 'next/app';
+import dynamic from 'next/dynamic';
+const AppImport = import('./realApp');
+const App = dynamic(() => AppImport)
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      {/* <Script
-        data-webpack="server"
-        src="http://localhost:3000/_next/static/chunks/remoteEntry.js"
-      />
-      <Script
-        data-webpack="home"
-        src="http://localhost:3001/_next/static/chunks/remoteEntry.js"
-      />
-      <Script
-        data-webpack="products"
-        src="http://localhost:3002/_next/static/chunks/remoteEntry.js"
-      />
-      <Script
-        data-webpack="ui"
-        src="http://localhost:3003/_next/static/chunks/remoteEntry.js"
-      /> */}
-      <ChakraProvider resetCSS={true} theme={theme}>
-        <Component {...pageProps} />
-      </ChakraProvider>
-    </>
-  )
+const UIShell = (props: any) => {
+  return <App {...props}></App>
 }
-
-MyApp.getInitialProps = async (appContext: any) => {
-  const [appProps] = await Promise.all([
-    App.getInitialProps(appContext),
-  ]);
-
-  const props = { ...appProps };
-
-  if (typeof window === "undefined") {
-    appContext.ctx.res.setHeader(
-      "Cache-Control",
-      "s-maxage=1, stale-while-revalidate"
-    );
-  }
-
-  return props;
-};
-
-export default MyApp
+UIShell.getInitialProps = async (ctx: any) => {
+  const gip = (await AppImport).default
+  return gip.getInitialProps(ctx)
+}
+export default UIShell

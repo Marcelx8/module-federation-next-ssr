@@ -5,7 +5,7 @@ const Layout = (await import('ui/Layout')).default
 const Counter = (await import('ui/Counter')).default
 const Title = (await import('ui/Title')).default
 const useStore = (await import('ui/store')).default
-
+import Nav from '../../components/Nav'
 
 const Login: NextPage = () => {
 
@@ -19,6 +19,7 @@ const Login: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <Nav />
         <Layout>
           <Title text="Login" />
           <Counter count={count} onIncrement={increment} onDecrement={decrement} />
@@ -29,7 +30,7 @@ const Login: NextPage = () => {
 }
 
 Login.getInitialProps = async (ctx) => {
-  return {};
+  return { ctx };
 }
 
 export default Login

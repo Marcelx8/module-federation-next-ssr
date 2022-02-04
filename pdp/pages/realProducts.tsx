@@ -6,6 +6,7 @@ const Layout = (await import('ui/Layout')).default
 const Counter = (await import('ui/Counter')).default
 const Title = (await import('ui/Title')).default
 const useStore = (await import('ui/store')).default
+import Nav from '../components/Nav'
 
 const RealProducts: NextPage = () => {
 
@@ -19,6 +20,7 @@ const RealProducts: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <Nav />
         <Layout>
           <Title text="RealProducts" />
           <Counter count={count} onIncrement={increment} onDecrement={decrement} />
@@ -29,7 +31,7 @@ const RealProducts: NextPage = () => {
 }
 
 RealProducts.getInitialProps = async (ctx) => {
-  return {};
+  return { ctx };
 }
 
 export default RealProducts

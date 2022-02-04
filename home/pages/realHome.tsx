@@ -4,7 +4,12 @@ import getTodos from '../lib/api'
 import dynamic from 'next/dynamic';
 
 const Layout = (await import('ui/Layout')).default
+// const Layout = dynamic(() => import('ui/Layout'))
 const Counter = (await import('ui/Counter')).default
+// const Nav = (await import('ui/Nav')).default
+import Nav from '../components/Nav'
+// const Nav = dynamic(() => import('ui/Nav'))
+// const Title = dynamic(() => import('ui/Title'))
 const Title = (await import('ui/Title')).default
 const useStore = (await import('ui/store')).default
 
@@ -12,8 +17,9 @@ interface PostData {
   postData: any
 }
 
-const RealHome = ({ postData }: PostData) => {
-  console.log("postData ::", postData)
+// const Nav = (await import('ui/Nav')).default
+const RealHome: NextPage = () => {
+  // console.log("postData ::", postData)
 
   const { count, increment, decrement } = useStore()
 
@@ -25,12 +31,13 @@ const RealHome = ({ postData }: PostData) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <Nav />
         <Layout>
           <Title text="Home" />
           <Counter count={count} onIncrement={increment} onDecrement={decrement} />
           <div>
             <h3>Data:</h3>
-            {JSON.stringify(postData)}
+            {/* {JSON.stringify(postData)} */}
           </div>
         </Layout>
       </main>
@@ -38,9 +45,12 @@ const RealHome = ({ postData }: PostData) => {
   )
 }
 
-RealHome.getInitialProps = async () => {
-  const postData: PostData = await getTodos()
-  return { props: postData };
+RealHome.getInitialProps = async (ctx) => {
+  // const postData = fetch('https://jsonplaceholder.typicode.com/todos/5').then(res => res.json());
+  // const Nav = dynamic(() => import('ui/Nav'))
+
+  // const data = { postData, Nav }
+  return { ctx };
 }
 
 export default RealHome

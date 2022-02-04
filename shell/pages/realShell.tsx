@@ -1,7 +1,7 @@
-
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import Nav from '../components/Nav'
 
 // const Layout = (await import('ui/Layout')).default
 
@@ -15,6 +15,7 @@ const RealServer: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <Nav />
         {/* <Layout> */}
           <h1>
             RealServer
@@ -36,7 +37,7 @@ const RealServer: NextPage = () => {
 }
 
 RealServer.getInitialProps = async (ctx) => {
-  return {};
+  return {ctx};
 }
 
 export default RealServer

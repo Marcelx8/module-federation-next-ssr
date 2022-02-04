@@ -1,5 +1,13 @@
 import dynamic from 'next/dynamic';
+const PageImport = import('./realProducts')
+const Page = dynamic(() => PageImport)
+const Wrapper = (props: any) => {
+  return <Page {...props}></Page>
+}
+Wrapper.getInitialProps = async (ctx: any) => {
+  const gip = (await PageImport).default
+  {/* @ts-ignore */}
+    return gip.getInitialProps(ctx)
+  }
 
-const Products = dynamic(() => import('./realProducts'))
-
-export default Products
+  export default Wrapper

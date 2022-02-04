@@ -1,8 +1,16 @@
 import dynamic from 'next/dynamic';
+const PageImport = import('./realUi')
+const Page = dynamic(() => PageImport)
+const UiWrapper = (props: any) => {
+  return <Page {...props}></Page>
+}
+UiWrapper.getInitialProps = async (ctx: any) => {
+  const gip = (await PageImport).default
+  {/* @ts-ignore */}
+    return gip.getInitialProps(ctx)
+  }
 
-const UI = dynamic(() => import('./realUi'))
-
-export default UI
+  export default UiWrapper
 
 
 // import type { NextPage } from 'next'
