@@ -3,12 +3,12 @@
   "workspaces": [
     "./shell",
     "./home",
-    "./pdp",
+    "./products",
     "./ui"
   ],
   "scripts": {
-    "dev": "concurrently \"wsrun --parallel dev\"",
-    "build": "concurrently \"wsrun --parallel build\"",
+    "dev": "concurrently \"cd shell && yarn dev\" \"cd home && yarn dev\" \"cd products && yarn dev\" \"cd ui && yarn dev\"",
+    "build": "concurrently \"cd shell && yarn build\" \"cd home && yarn build\" \"cd products && yarn build\" \"cd ui && yarn build\"",
     "start": "concurrently \"wsrun --parallel start\""
   },
   "resolutions": {

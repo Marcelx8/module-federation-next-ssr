@@ -10,24 +10,24 @@ import {
 const Counter = ({ count, onIncrement, onDecrement }: { count: number, onIncrement: () => void, onDecrement: () => void }) => {
   return (
     <>
-      <Center py={6}>
+      <Center py={2}>
         <Box
-          maxW={'500px'}
+          maxW={'400px'}
           w={'full'}
-          bg={'lightgray'}
+          bg={'lightBlue'}
           rounded={'lg'}
-          p={20}
+          p={10}
           textAlign={'center'}>
-          <Heading as="h2" fontSize="2xl" className="heading">
+          <Heading as="h2" mb={5} fontSize="3xl" className="heading">
             {count}
           </Heading>
-          <Stack spacing={4} direction='row' align='center'>
+          <Stack spacing={4} direction='row' justify="center" align='center'>
             <Button
-              size='xs' onClick={onIncrement}>
+              p={5} size='s' onClick={onIncrement}>
               Increment
             </Button>
             <Button
-              size='xs' onClick={onDecrement}>
+              p={5} size='s' onClick={onDecrement}>
               Decrement
             </Button>
           </Stack>

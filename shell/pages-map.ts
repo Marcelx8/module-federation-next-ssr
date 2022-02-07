@@ -1,3 +1,3 @@
 export default {
-  "/shell": "./shell",
+  "/": "./shell",
 }

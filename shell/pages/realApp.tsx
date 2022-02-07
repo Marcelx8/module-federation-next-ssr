@@ -1,25 +1,25 @@
 import type { AppContext, AppProps } from 'next/app'
 import App from 'next/app';
-import { CacheProvider, EmotionCache } from '@emotion/react';
+// import { CacheProvider, EmotionCache } from '@emotion/react';
 import { ChakraProvider } from '@chakra-ui/react'
-import theme from '../theme'
-import createEmotionCache from '../utilities/createEmotionCache';
+import theme from '../theme/theme'
+// import createEmotionCache from '../utilities/createEmotionCache';
 
-interface MyAppProps extends AppProps {
-  emotionCache?: EmotionCache;
-}
+// interface MyAppProps extends AppProps {
+//   emotionCache?: EmotionCache;
+// }
 
-const clientSideEmotionCache = createEmotionCache();
+// const clientSideEmotionCache = createEmotionCache();
 
-const MyApp = ({ Component, emotionCache = clientSideEmotionCache, pageProps }: MyAppProps) => {
+const MyApp = ({ Component, pageProps }: AppProps) => {
 // const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
-      <CacheProvider value={emotionCache}>
+      {/* <CacheProvider value={emotionCache}> */}
         <ChakraProvider resetCSS={true} theme={theme}>
           <Component {...pageProps} />
         </ChakraProvider>
-      </CacheProvider>
+      {/* </CacheProvider> */}
     </>
   )
 }

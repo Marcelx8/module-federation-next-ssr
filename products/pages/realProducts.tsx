@@ -2,15 +2,15 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-const Layout = (await import('ui/Layout')).default
-const Counter = (await import('ui/Counter')).default
-const Title = (await import('ui/Title')).default
-const useStore = (await import('ui/store')).default
 import Nav from '../components/Nav'
+// const Layout = (await import('ui/Layout')).default
+// const Counter = (await import('ui/Counter')).default
+// const Title = (await import('ui/Title')).default
+// const useStore = (await import('ui/store')).default
 
 const RealProducts: NextPage = () => {
 
-  const { count, increment, decrement } = useStore();
+  // const { count, increment, decrement } = useStore();
 
   return (
     <>
@@ -21,10 +21,10 @@ const RealProducts: NextPage = () => {
       </Head>
       <main>
         <Nav />
-        <Layout>
+        {/* <Layout>
           <Title text="RealProducts" />
           <Counter count={count} onIncrement={increment} onDecrement={decrement} />
-        </Layout>
+        </Layout> */}
       </main>
     </>
   )

@@ -2,19 +2,19 @@
 //  * @type {import('next').NextConfig}
 //  **/
 const { withFederatedSidecar } = require('@module-federation/nextjs-ssr');
-const FederatedStatsPlugin = require('webpack-federated-stats-plugin');
 const withPlugins = require('next-compose-plugins');
+const FederatedStatsPlugin = require('webpack-federated-stats-plugin');
 
 const name = 'ui';
 const exposes = {
-  './Layout': './components/layout/Layout.tsx',
-  './Header': './components/layout/Header.tsx',
+  // './Layout': './components/layout/Layout.tsx',
+  // './Header': './components/layout/Header.tsx',
   './Counter': './components/Counter.tsx',
-  './Title': './components/Title.tsx',
-  './Nav': './components/Nav.tsx',
+  // './Title': './components/Title.tsx',
+  './Nav': './components/Nav.js',
   './store': './lib/store.ts',
   './ui': './pages/ui.tsx',
-  './pages-map': './pages-map',
+  './pages-map': './pages-map.ts',
 };
 // this enables you to use import() and the webpack parser
 // loading remotes on demand, not ideal for SSR
@@ -40,6 +40,14 @@ const nextConfig = {
   webpack(config, options) {
     const { webpack, isServer } = options;
 
+    if (!isServer) {
+      config.plugins.push(
+        new FederatedStatsPlugin({
+          filename: 'static/federated-stats.json',
+        })
+      );
+    }
+
     config.module.rules.push({
       test: /_app.tsx/,
       loader: '@module-federation/nextjs-ssr/lib/federation-loader.js',
@@ -50,14 +58,6 @@ const nextConfig = {
         "process.env.CURRENT_HOST": JSON.stringify("ui"),
       })
     );
-
-    if (!isServer) {
-      config.plugins.push(
-        new FederatedStatsPlugin({
-          filename: 'static/federated-stats.json',
-        })
-      );
-    }
 
     return config;
   },
@@ -77,15 +77,23 @@ module.exports = withPlugins(
             requiredVersion: false,
             singleton: true,
           },
-          zustand: {
+          "react-dom": {
             requiredVersion: false,
             singleton: true,
           },
+          // zustand: {
+          //   requiredVersion: false,
+          //   singleton: true,
+          // },
           '@chakra-ui/react': {
             requiredVersion: false,
             singleton: true,
           },
           '@chakra-ui/server': {
+            requiredVersion: false,
+            singleton: true,
+          },
+          '@chakra-ui/theme-tools': {
             requiredVersion: false,
             singleton: true,
           },

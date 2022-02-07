@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document";
 import { flushChunks, ExtendedHead } from "@module-federation/nextjs-ssr/flushChunks";
+import { ColorModeScript } from '@chakra-ui/react'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -18,6 +19,7 @@ class MyDocument extends Document {
           {this.props.remoteChunks}
         </ExtendedHead>
         <body>
+          <ColorModeScript />
           <Main />
           <NextScript />
         </body>

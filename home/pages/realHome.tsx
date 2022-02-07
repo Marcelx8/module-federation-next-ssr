@@ -1,27 +1,21 @@
 import { NextPage } from 'next'
+import React from 'react'
 import Head from 'next/head'
 import getTodos from '../lib/api'
-import dynamic from 'next/dynamic';
 
-const Layout = (await import('ui/Layout')).default
-// const Layout = dynamic(() => import('ui/Layout'))
-const Counter = (await import('ui/Counter')).default
+// import Nav from '../components/Nav'
+import Nav from 'ui/Nav'
 // const Nav = (await import('ui/Nav')).default
-import Nav from '../components/Nav'
-// const Nav = dynamic(() => import('ui/Nav'))
-// const Title = dynamic(() => import('ui/Title'))
-const Title = (await import('ui/Title')).default
-const useStore = (await import('ui/store')).default
-
-interface PostData {
-  postData: any
-}
+// const Layout = (await import('ui/Layout')).default
+// const Counter = (await import('ui/Counter')).default
+// const Title = (await import('ui/Title')).default
+// const useStore = (await import('ui/store')).default
 
 // const Nav = (await import('ui/Nav')).default
 const RealHome: NextPage = () => {
   // console.log("postData ::", postData)
 
-  const { count, increment, decrement } = useStore()
+  // const { count, increment, decrement } = useStore()
 
   return (
     <>
@@ -32,14 +26,14 @@ const RealHome: NextPage = () => {
       </Head>
       <main>
         <Nav />
-        <Layout>
-          <Title text="Home" />
-          <Counter count={count} onIncrement={increment} onDecrement={decrement} />
+        {/* <Layout>
+          <Title text="Home" /> */}
+          {/* <Counter count={0} onIncrement={() => 1 + 1} onDecrement={() => 1 - 1} /> */}
           <div>
             <h3>Data:</h3>
             {/* {JSON.stringify(postData)} */}
           </div>
-        </Layout>
+        {/* </Layout> */}
       </main>
     </>
   )

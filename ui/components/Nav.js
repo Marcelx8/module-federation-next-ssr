@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+// import Link from "next/link";
 
 const links = [
   { href: "/", label: "Home" },
@@ -12,11 +12,12 @@ const Nav = () => {
   return (
     <nav>
       <ul>
-        {links.map(({ href, label }) => (
+        HOME _ PRODUCTS _ LOGIN _ UI
+        {/* {links.map(({ href, label }) => (
           <Link key={`nav-link-${label}`} href={href}>
             <a>- {label} -</a>
           </Link>
-        ))}
+        ))} */}
       </ul>
     </nav>
   )

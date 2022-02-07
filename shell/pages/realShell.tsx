@@ -1,9 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import Nav from '../components/Nav'
+// import Nav from 'ui/Nav'
 
 // const Layout = (await import('ui/Layout')).default
+const Nav = (await import('ui/Nav')).default
 
 const RealServer: NextPage = () => {
 
@@ -21,15 +22,6 @@ const RealServer: NextPage = () => {
             RealServer
           </h1>
           <br />
-          <Link href="/" >
-            <a>Home</a>
-          </Link>
-          <Link href="/login" >
-            <a>Login</a>
-          </Link>
-          <Link href="/ui" >
-            <a>UI</a>
-          </Link>
         {/* </Layout> */}
       </main>
     </>
