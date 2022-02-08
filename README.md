@@ -5,7 +5,7 @@ The plugin is not free, and at the time of writing this, it is in beta (version 
 
 *This example is based on <a href="https://github.com/module-federation/module-federation-examples/tree/master/nextjs-ssr">module-federation/module-federation-examples/nextjs-ssr</a>*
 
-## This workspace contains 4 Next.js apps, `home`, `pdp`, `shell`, `ui`.
+## This workspace contains 4 Next.js apps, `home`, `products`, `shell`, `ui`.
 
 ## Usage
 
