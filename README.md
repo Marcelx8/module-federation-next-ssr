@@ -14,5 +14,10 @@ The plugin is not free, and at the time of writing this, it is in beta (version 
 3. Run `npm i` to install the rest of the dependencies.
 4. There is another "shared" repo called `route-matcher` which can be externalized to an npm package. For local development, `cd` to the folder and run `yarn link`. Then, in the 4 app routes, run `yarn link route-matcher`.
 5. When all is installed and done, `cd ..` to the workspace directory and run `yarn dev`.
+6. To test the build, run `yarn start && yarn build` in the following sequence:
+  - ui,
+  - shell,
+  - home,
+  - products
 
 ### Enjoy!
