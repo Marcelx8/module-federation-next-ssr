@@ -12,7 +12,7 @@ The plugin is not free, and at the time of writing this, it is in beta (version 
 1. Clone the repo and run `yarn` in the root to install the workspace dependencies.
 2. If you have access to the plugin mentioned above, then `cd` into each of the NextJS apps and use `npm` to intsall the plugin with your given registry details.
 3. Run `npm i` to install the rest of the dependencies.
-4. There is another "shared" repo called `route-matcher` which can be externalized to an npm package. For local development, `cd` to the folder and run `yarn link`. Then, in the 4 app routes, run `yarn link route-matcher`.
+4. There is another `shared` repo which can be externalized to an npm package. This is used to match the routes from the `pages-map` files, and more
 5. When all is installed and done, `cd ..` to the workspace directory and run `yarn dev`.
 6. To test the build, run `yarn start && yarn build` in the following sequence:
   - ui,
