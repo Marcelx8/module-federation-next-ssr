@@ -13,7 +13,7 @@ The plugin is not free, and at the time of writing this, it is in beta (version 
 2. If you have access to the plugin mentioned above, then `cd` into each of the NextJS apps and use `npm` to intsall the plugin with your given registry details.
 3. Run `npm i` to install the rest of the dependencies.
 4. When all is installed and done, `cd ..` to the workspace directory and run `yarn dev`.
-5. To test the build, run `yarn start && yarn build` in the following sequence:
+5. To test the build, run `yarn build && yarn start` in the following sequence:
   - ui,
   - shell,
   - home,
