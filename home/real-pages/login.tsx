@@ -1,15 +1,16 @@
 import type { NextPage } from 'next'
+import dynamic from 'next/dynamic';
 import Head from 'next/head'
 
-// const Layout = (await import('ui/Layout')).default
-// const Counter = (await import('ui/Counter')).default
-// const Title = (await import('ui/Title')).default
-// const useStore = (await import('ui/store')).default
-import Nav from '../../components/Nav'
+// Federated imports
+const useStore = (await import('../fed-store/uiStore')).default
+const Nav = dynamic(() => import('../fed-components/uiNav'))
+const Title = dynamic(() => import('../fed-components/uiTitle'))
+const Counter = dynamic(() => import('../fed-components/uiCounter'))
 
 const Login: NextPage = () => {
 
-  // const { count, increment, decrement } = useStore()
+  const { count, increment, decrement } = useStore()
 
   return (
     <>
@@ -20,10 +21,10 @@ const Login: NextPage = () => {
       </Head>
       <main>
         <Nav />
-        {/* <Layout>
+        {/* <Layout> */}
           <Title text="Login" />
           <Counter count={count} onIncrement={increment} onDecrement={decrement} />
-        </Layout> */}
+        {/* </Layout> */}
       </main>
     </>
   )

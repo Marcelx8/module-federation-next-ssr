@@ -7,11 +7,11 @@ const FederatedStatsPlugin = require('webpack-federated-stats-plugin');
 
 const name = 'ui';
 const exposes = {
-  // './Layout': './components/layout/Layout.tsx',
-  // './Header': './components/layout/Header.tsx',
+  './Layout': './components/layout/Layout.tsx',
+  './Header': './components/layout/Header.tsx',
   './Counter': './components/Counter.tsx',
-  // './Title': './components/Title.tsx',
-  './Nav': './components/Nav.js',
+  './Title': './components/Title.tsx',
+  './Nav': './components/Nav.tsx',
   './store': './lib/store.ts',
   './ui': './pages/ui.tsx',
   './pages-map': './pages-map.ts',
@@ -21,18 +21,10 @@ const exposes = {
 const remotes = (isServer) => {
   const location = isServer ? 'ssr' : 'chunks';
   return {
-    shell: process.env.VERCEL
-    ? `shell@https://module-federation-next-ssr-shell.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
-    : `shell@http://localhost:3000/_next/static/${location}/remoteEntry.js?${Date.now()}`,
-    home: process.env.VERCEL
-    ? `home@https://module-federation-next-ssr-home.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
-    : `home@http://localhost:3001/_next/static/${location}/remoteEntry.js?${Date.now()}`,
-    products: process.env.VERCEL
-    ? `products@https://module-federation-next-ssr-products.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
-    : `products@http://localhost:3002/_next/static/${location}/remoteEntry.js?${Date.now()}`,
-    ui: process.env.VERCEL
-    ? `ui@https://module-federation-next-ssr-ui.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
-    : `ui@http://localhost:3003/_next/static/${location}/remoteEntry.js?${Date.now()}`,
+    shell: `shell@http://localhost:3000/_next/static/${location}/remoteEntry.js?${Date.now()}`,
+    home: `home@http://localhost:3001/_next/static/${location}/remoteEntry.js?${Date.now()}`,
+    products: `products@http://localhost:3002/_next/static/${location}/remoteEntry.js?${Date.now()}`,
+    ui: `ui@http://localhost:3003/_next/static/${location}/remoteEntry.js?${Date.now()}`,
   };
 };
 
@@ -80,11 +72,12 @@ module.exports = withPlugins(
           "react-dom": {
             requiredVersion: false,
             singleton: true,
+            eager: true
           },
-          // zustand: {
-          //   requiredVersion: false,
-          //   singleton: true,
-          // },
+          zustand: {
+            requiredVersion: false,
+            singleton: true,
+          },
           '@chakra-ui/react': {
             requiredVersion: false,
             singleton: true,

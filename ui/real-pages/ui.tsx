@@ -8,14 +8,6 @@ import Layout from '../components/layout/Layout'
 import Counter from '../components/Counter'
 import Title from '../components/Title'
 import useStore from '../lib/store'
-// import useStore from 'ui/store'
-// const Nav = (await import('ui/Nav')).default
-// const useStore = (await import('ui/store')).default
-// const Layout = (await import('ui/Layout')).default
-// const Layout = dynamic(() => import('ui/Layout'))
-// const Counter = (await import('../components/Counter')).default
-// const Title = (await import('../components/Title')).default
-// const useStore = (await import('../lib/store')).default
 
 const RealUI: NextPage = () => {
 

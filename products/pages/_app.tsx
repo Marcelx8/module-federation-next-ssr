@@ -1,6 +1,6 @@
 import { AppProps, AppContext } from 'next/app';
 import dynamic from 'next/dynamic';
-const AppImport = import('./realApp');
+const AppImport = import('../real-pages/app');
 const App = dynamic(() => AppImport)
 
 const Shell = (props: AppProps) => {

@@ -18,6 +18,6 @@
       "*": ["./@types/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.d.ts", "components/Nav.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.d.ts", "components/Nav.tsx"],
   "exclude": ["node_modules", "./*/**/node_modules"]
 }

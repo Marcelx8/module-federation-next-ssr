@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
-const PageImport = import('./realHome')
+const PageImport = import('../real-pages/home')
 const Page = dynamic(() => PageImport)
+
 const Wrapper = (props: any) => {
   return <Page {...props}></Page>
 }

@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-const PageImport = import('./realShell')
+const PageImport = import('../real-pages/shell')
 const Page = dynamic(() => PageImport)
 const Wrapper = (props: any) => {
   return <Page {...props}></Page>
