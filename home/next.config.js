@@ -16,17 +16,17 @@ const exposes = {
 const remotes = (isServer) => {
   const location = isServer ? 'ssr' : 'chunks';
   return {
-    shell: process.env.VERCEL
-    ? `shell@https://${process.env.VERCEL_URL}-shell.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
+    shell: process.env.VERCEL_URL
+    ? `shell@https://${process.env.VERCEL_URL}/_next/static/${location}/remoteEntry.js?${Date.now()}`
     : `shell@http://localhost:3000/_next/static/${location}/remoteEntry.js?${Date.now()}`,
-    home: process.env.VERCEL
-    ? `home@https://${process.env.VERCEL_URL}-home.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
+    home: process.env.VERCEL_URL
+    ? `home@https://${process.env.VERCEL_URL}/_next/static/${location}/remoteEntry.js?${Date.now()}`
     : `home@http://localhost:3001/_next/static/${location}/remoteEntry.js?${Date.now()}`,
-    products: process.env.VERCEL
-    ? `products@https://${process.env.VERCEL_URL}-products.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
+    products: process.env.VERCEL_URL
+    ? `products@https://${process.env.VERCEL_URL}/_next/static/${location}/remoteEntry.js?${Date.now()}`
     : `products@http://localhost:3002/_next/static/${location}/remoteEntry.js?${Date.now()}`,
-    ui: process.env.VERCEL
-    ? `ui@https://${process.env.VERCEL_URL}-ui.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
+    ui: process.env.VERCEL_URL
+    ? `ui@https://${process.env.VERCEL_URL}/_next/static/${location}/remoteEntry.js?${Date.now()}`
     : `ui@http://localhost:3003/_next/static/${location}/remoteEntry.js?${Date.now()}`,
   };
 };
@@ -34,7 +34,7 @@ const remotes = (isServer) => {
 const nextConfig = {
   env: {
     VERCEL: process.env.VERCEL,
-    VERCEL_URL: `module-federation-next-ssr`
+    VERCEL_URL: process.env.VERCEL_URL
   },
 
   webpack(config, options) {
