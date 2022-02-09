@@ -4,6 +4,8 @@ import Head from 'next/head'
 
 // Federated imports
 const useStore = (await import('../fed-store/uiStore')).default
+const Layout = dynamic(() => import('../fed-components/uiLayout'))
+const Header = dynamic(() => import('../fed-components/uiHeader'))
 const Nav = dynamic(() => import('../fed-components/uiNav'))
 const Title = dynamic(() => import('../fed-components/uiTitle'))
 const Counter = dynamic(() => import('../fed-components/uiCounter'))
@@ -20,11 +22,13 @@ const Login: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Nav />
-        {/* <Layout> */}
+      <Layout>
+          <Header>
+            <Nav />
+          </Header>
           <Title text="Login" />
           <Counter count={count} onIncrement={increment} onDecrement={decrement} />
-        {/* </Layout> */}
+        </Layout>
       </main>
     </>
   )

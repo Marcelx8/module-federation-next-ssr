@@ -3,7 +3,6 @@
   "workspaces": [
     "./shell",
     "./home",
-    "./products",
     "./ui"
   ],
   "scripts": {
