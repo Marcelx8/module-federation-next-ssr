@@ -22,16 +22,16 @@ const remotes = (isServer) => {
   const location = isServer ? 'ssr' : 'chunks';
   return {
     shell: process.env.VERCEL_URL
-    ? `shell@https://${process.env.VERCEL_URL}/_next/static/${location}/remoteEntry.js?${Date.now()}`
+    ? `shell@https://module-federation-next-ssr-shell.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
     : `shell@http://localhost:3000/_next/static/${location}/remoteEntry.js?${Date.now()}`,
     home: process.env.VERCEL_URL
-    ? `home@https://${process.env.VERCEL_URL}/_next/static/${location}/remoteEntry.js?${Date.now()}`
+    ? `home@https://module-federation-next-ssr-home.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
     : `home@http://localhost:3001/_next/static/${location}/remoteEntry.js?${Date.now()}`,
     products: process.env.VERCEL_URL
-    ? `products@https://${process.env.VERCEL_URL}/_next/static/${location}/remoteEntry.js?${Date.now()}`
+    ? `products@https://module-federation-next-ssr-products.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
     : `products@http://localhost:3002/_next/static/${location}/remoteEntry.js?${Date.now()}`,
     ui: process.env.VERCEL_URL
-    ? `ui@https://${process.env.VERCEL_URL}/_next/static/${location}/remoteEntry.js?${Date.now()}`
+    ? `ui@https://module-federation-next-ssr-ui.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
     : `ui@http://localhost:3003/_next/static/${location}/remoteEntry.js?${Date.now()}`,
   };
 };
