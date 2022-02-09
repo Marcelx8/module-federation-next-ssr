@@ -18,13 +18,13 @@ const remotes = (isServer) => {
     shell: process.env.VERCEL
     ? `shell@https://${VERCEL_URL}-shell.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
     : `shell@http://localhost:3000/_next/static/${location}/remoteEntry.js?${Date.now()}`,
-    home: process.env.VERCEL_URL
+    home: process.env.VERCEL
     ? `home@https://${VERCEL_URL}-home.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
     : `home@http://localhost:3001/_next/static/${location}/remoteEntry.js?${Date.now()}`,
-    products: process.env.VERCEL_URL
+    products: process.env.VERCEL
     ? `products@https://${VERCEL_URL}-products.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
     : `products@http://localhost:3002/_next/static/${location}/remoteEntry.js?${Date.now()}`,
-    ui: process.env.VERCEL_URL
+    ui: process.env.VERCEL
     ? `ui@https://${VERCEL_URL}-ui.vercel.app/_next/static/${location}/remoteEntry.js?${Date.now()}`
     : `ui@http://localhost:3003/_next/static/${location}/remoteEntry.js?${Date.now()}`,
   };
