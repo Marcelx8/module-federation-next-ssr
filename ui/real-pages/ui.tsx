@@ -22,10 +22,10 @@ const RealUI: NextPage = () => {
       </Head>
       <main>
         <Nav />
-        <Layout>
+        {/* <Layout> */}
           <Title text="RealUI" />
           <Counter count={count} onIncrement={increment} onDecrement={decrement} />
-        </Layout>
+        {/* </Layout> */}
       </main>
     </>
   )
