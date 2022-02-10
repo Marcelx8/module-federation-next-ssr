@@ -14,11 +14,11 @@ const Counter = ({ count, onIncrement, onDecrement }: { count: number, onIncreme
         <Box
           maxW={'400px'}
           w={'full'}
-          bg={'lightBlue'}
+          bg={'#48BB78'}
           rounded={'lg'}
           p={10}
           textAlign={'center'}>
-          <Heading as="h2" mb={5} fontSize="3xl" className="heading">
+          <Heading as="h2" mb={5} fontSize="4xl" className="heading">
             {count}
           </Heading>
           <Stack spacing={4} direction='row' justify="center" align='center'>

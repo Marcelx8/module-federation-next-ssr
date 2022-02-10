@@ -14,7 +14,7 @@ const Nav = () => {
       <ul>
         {links.map(({ href, label }) => (
           <Link key={`nav-link-${label}`} href={href}>
-            <a> - {label} - </a>
+            <a> &lt; {label} &gt; </a>
           </Link>
         ))}
       </ul>
