@@ -54,6 +54,7 @@ const nextConfig = {
     config.plugins.push(
       new webpack.DefinePlugin({
         "process.env.CURRENT_HOST": JSON.stringify("home"),
+        __SENTRY_HUB__: "{}",
       })
     );
 

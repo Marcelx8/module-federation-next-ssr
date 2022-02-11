@@ -53,6 +53,7 @@ const nextConfig = {
     config.plugins.push(
       new webpack.DefinePlugin({
         "process.env.CURRENT_HOST": JSON.stringify("shell"),
+        __SENTRY_HUB__: "{}",
       })
     );
 
